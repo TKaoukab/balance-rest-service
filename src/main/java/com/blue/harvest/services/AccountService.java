@@ -15,6 +15,11 @@ public class AccountService {
 	@Autowired
 	AccountRepository accountRepository;
 	
+	/**
+	 * Search a customer by Id
+	 * @param customerId
+	 * @return the customer corresponding to customerId
+	 */
 	public Customer findCustomerById(int customerId) {
 		
 		Customer customer = accountRepository.findAccountById(customerId);

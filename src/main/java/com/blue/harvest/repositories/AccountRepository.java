@@ -9,6 +9,11 @@ import com.blue.harvest.beans.Customer;
  */
 public interface AccountRepository {
 	
-	  public Customer findAccountById(int customerId);
+	/**
+	 * Search a customer by Id
+	 * @param customerId
+	 * @return the customer corresponding to customerId
+	 */
+	public Customer findAccountById(int customerId);
 
 }
