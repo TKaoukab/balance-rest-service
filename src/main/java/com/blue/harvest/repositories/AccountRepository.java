@@ -16,4 +16,11 @@ public interface AccountRepository {
 	 */
 	public Customer findAccountById(int customerId);
 
+	/**
+	 * Adds a new account to the customer, with a transaction
+	 * @param initialCredit
+	 * @param customer
+	 */
+	public Customer addAccountToCustomer(Customer customer, double initialCredit);
+
 }

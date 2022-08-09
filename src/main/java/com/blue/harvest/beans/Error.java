@@ -1,9 +1,11 @@
-package com.blue.harvest.exception;
+package com.blue.harvest.beans;
 
-public class Error {
+import java.io.Serializable;
 
-	public Error() {}
-	
+public class Error implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	public Error(int code, String message) {
 		this.code = code;
 		this.message = message;
@@ -14,14 +16,14 @@ public class Error {
 	private String message;
 
 	/**
-	 * @return the code
+	 * @return the error code
 	 */
 	public int getCode() {
 		return code;
 	}
 
 	/**
-	 * @param code the code to set
+	 * @param code the error code to set
 	 */
 	public void setCode(int code) {
 		this.code = code;

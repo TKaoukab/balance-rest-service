@@ -1,6 +1,5 @@
 package com.blue.harvest.beans;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Customer {
@@ -11,9 +10,9 @@ public class Customer {
 	
 	private String surname;
 	
-	private List<Account> transactionList;
-	
 	private double balance;
+
+	private List<Account> accountList;
 	
 	public Customer() {}
 	
@@ -21,16 +20,6 @@ public class Customer {
 		this.customerId = customerId;
 		this.name = name;
 		this.surname = surname;
-	}
-
-	public Customer(int customerId, String name, String surname, Account customerAccount) {
-		this.customerId = customerId;
-		this.name = name;
-		this.surname = surname;
-		if(this.transactionList == null) 
-			this.transactionList = Arrays.asList(customerAccount);
-		else
-			this.transactionList.add(customerAccount);
 	}
 
 	/**
@@ -78,8 +67,15 @@ public class Customer {
 	/**
 	 * @return the customerAccountList
 	 */
-	public List<Account> getTransactionList() {
-		return transactionList;
+	public List<Account> getAccountList() {
+		return accountList;
+	}
+	
+	/**
+	 * @param the accountTransactionList
+	 */
+	public void setAccountList(List<Account> accountAccountList) {
+		this.accountList = accountAccountList;
 	}
 
 	/**

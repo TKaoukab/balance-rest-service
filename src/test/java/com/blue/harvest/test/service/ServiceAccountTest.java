@@ -1,38 +1,45 @@
-package com.blue.harvest;
+package com.blue.harvest.test.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
 
 import java.util.HashMap;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 
 import com.blue.harvest.beans.Customer;
 import com.blue.harvest.repositories.AccountRepositoryImpl;
 import com.blue.harvest.services.AccountService;
 
+@TestMethodOrder(OrderAnnotation.class)
+@ContextConfiguration(classes = {AccountRepositoryImpl.class, AccountService.class})
 @SpringBootTest(classes= {ServiceAccountTest.class})
 public class ServiceAccountTest {
 
-	@Mock
+	@Autowired
 	AccountRepositoryImpl accountRepository;
 	
-	@InjectMocks
+	@Autowired
 	AccountService accountService;
 	
-	@Test
-	public void testFindCustomerById() {
-		
+	private Customer customer = new Customer(1, "David", "Beckham");
+	
+	@BeforeEach
+	private void init() {
 		HashMap<Integer, Customer> customersMap = new HashMap<>();
-		Customer customer = new Customer(1, "David", "Beckham");
 		customersMap.put(1, customer);
-		
 		accountRepository.setCustomersMap(customersMap);
-		when(accountRepository.findAccountById(1)).thenReturn(customer);
-		
+	}
+
+	
+	@Test
+	void testFindCustomerById() {
+				
 		assertEquals(1, accountService.findCustomerById(1).getCustomerId());
 	}
 }

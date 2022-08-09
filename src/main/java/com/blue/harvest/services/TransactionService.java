@@ -13,32 +13,31 @@ import com.blue.harvest.repositories.AccountRepository;
 
 @Component
 @Service
-public class AccountService {
+public class TransactionService {
 
 	@Autowired
 	AccountRepository accountRepository;
 	
 	/**
-	 * Search a customer by Id
-	 * @param customerId
+	 * opens a new current account for already existing customers, and calculates the customer's balance.
+	 * @param customer
+	 * @param initialCredit
+	 * @return 
 	 * @return the customer corresponding to customerId
 	 */
-	public Customer findCustomerById(int customerId) {
+	public Customer addAccountToCustomer(Customer customer, double initialCredit) {
 		
-		Customer customer = accountRepository.findAccountById(customerId);
+		accountRepository.addAccountToCustomer(customer, initialCredit);
+
+		return calculateBalance(customer);
 		
-		if(customer != null && customer.getAccountList()!=null) {
-			
-			calculateBalance(customer);
-		}
-		return customer;
 	}
 
 	/**
 	 * Iterates over the customer's transactions and calculate the balance.
 	 * @param customer
 	 */
-	private void calculateBalance(Customer customer) {
+	private Customer calculateBalance(Customer customer) {
 		if(customer.getAccountList()!=null && !customer.getAccountList().isEmpty()) {
 			double balance = 0;
 			for(Account account: customer.getAccountList()) {
@@ -49,5 +48,7 @@ public class AccountService {
 			//ensure that the resulting double follows the specified format : #.####
 			customer.setBalance(BigDecimal.valueOf(balance).setScale(4, RoundingMode.HALF_UP).doubleValue());
 		}
+		
+		return customer;
 	}
 }
