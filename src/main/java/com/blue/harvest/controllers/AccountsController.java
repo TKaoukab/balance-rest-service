@@ -36,7 +36,7 @@ public class AccountsController {
 		if(customer != null) {
 			return new ResponseEntity<>(customer, HttpStatus.OK);
 		}
-		
+
 		return new ResponseEntity<>(customer, HttpStatus.NOT_FOUND);
 	}
 	
