@@ -16,10 +16,11 @@ public class Customer {
 	
 	public Customer() {}
 	
-	public Customer(int customerId, String name, String surname) {
+	public Customer(int customerId, String name, String surname, Double balance) {
 		this.customerId = customerId;
 		this.name = name;
 		this.surname = surname;
+		if(balance != null) this.balance = balance;
 	}
 
 	/**

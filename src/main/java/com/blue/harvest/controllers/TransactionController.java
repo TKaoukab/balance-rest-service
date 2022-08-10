@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blue.harvest.beans.Customer;
 import com.blue.harvest.beans.Error;
 import com.blue.harvest.exception.BusinessException;
-import com.blue.harvest.services.AccountService;
+import com.blue.harvest.services.CustomerService;
 import com.blue.harvest.services.TransactionService;
 
 @RestController
@@ -21,19 +21,19 @@ import com.blue.harvest.services.TransactionService;
 public class TransactionController {
 
 	@Autowired
-	AccountService accountService;
+	CustomerService customerService;
 
 	@Autowired
 	TransactionService transactionService;
 
 	@PostMapping(path="/{customerId}")
-	public ResponseEntity<Customer> getUser(@PathVariable String customerId, @RequestParam("initialCredit") String initialCredit) throws BusinessException {
+	public ResponseEntity<Customer> addAccountToCustomer(@PathVariable String customerId, @RequestParam("initialCredit") String initialCredit) throws BusinessException {
 		
 		Customer customer = null;
 		
 		try {
 			
-			customer = accountService.findCustomerById(Integer.parseInt(customerId));
+			customer = customerService.findCustomerById(Integer.parseInt(customerId));
 			
 		}catch(NumberFormatException nfe) {
 			
@@ -51,7 +51,7 @@ public class TransactionController {
 				throw new BusinessException(2, "the initialCredit has an invalid value");
 			}	
 				
-			return new ResponseEntity<>(customer, HttpStatus.OK);
+			return new ResponseEntity<>(customer, HttpStatus.CREATED);
 		}
 		
 		return new ResponseEntity<>(customer, HttpStatus.NOT_FOUND);

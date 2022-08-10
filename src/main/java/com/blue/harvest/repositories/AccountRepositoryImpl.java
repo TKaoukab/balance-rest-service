@@ -1,15 +1,11 @@
 package com.blue.harvest.repositories;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
-import com.blue.harvest.beans.Account;
 import com.blue.harvest.beans.Customer;
 
 @Repository
@@ -39,30 +35,6 @@ public class AccountRepositoryImpl implements AccountRepository, InitializingBea
 		return customersMap.get(customerId);
 		
 	}
-	
-	
-	public Customer addAccountToCustomer(Customer customer, double initialCredit) {
-		
-		Account account = new Account();
-		
-		if(customer.getAccountList() == null) {
-			customer.setAccountList(new ArrayList<>());
-		}
-		
-		account.setAccountId(customer.getAccountList().size()+1);
-		
-		//if initialCredit is not 0, a transaction will be sent to the new account
-		if(initialCredit !=0 ) {
-			//ensure that the resulting double follows the specified format : #.####
-			account.setTransaction(BigDecimal.valueOf(initialCredit).setScale(4, RoundingMode.HALF_UP).doubleValue());
-		}
-		
-		customer.getAccountList().add(account);
-
-		return customer;
-		
-	}
-
 
 	
 	/**
@@ -82,7 +54,7 @@ public class AccountRepositoryImpl implements AccountRepository, InitializingBea
 				String[] fields = customer.split(CUSTOMERFIELDSSEPARATOR);
 				
 				if(fields.length == NUMBEROFFIELDS) {
-					Customer customerTmp = new Customer(Integer.valueOf(fields[0]), fields[1], fields[2]);
+					Customer customerTmp = new Customer(Integer.valueOf(fields[0]), fields[1], fields[2], null);
 					customersMap.put(Integer.valueOf(fields[0]), customerTmp);
 				}
 				

@@ -14,10 +14,10 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.blue.harvest.beans.Customer;
 import com.blue.harvest.repositories.AccountRepositoryImpl;
-import com.blue.harvest.services.AccountService;
+import com.blue.harvest.services.CustomerService;
 
 @TestMethodOrder(OrderAnnotation.class)
-@ContextConfiguration(classes = {AccountRepositoryImpl.class, AccountService.class})
+@ContextConfiguration(classes = {AccountRepositoryImpl.class, CustomerService.class})
 @SpringBootTest(classes= {ServiceAccountTest.class})
 public class ServiceAccountTest {
 
@@ -25,9 +25,9 @@ public class ServiceAccountTest {
 	AccountRepositoryImpl accountRepository;
 	
 	@Autowired
-	AccountService accountService;
+	CustomerService accountService;
 	
-	private Customer customer = new Customer(1, "David", "Beckham");
+	private Customer customer = new Customer(1, "David", "Beckham", null);
 	
 	@BeforeEach
 	private void init() {

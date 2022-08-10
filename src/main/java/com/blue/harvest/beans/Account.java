@@ -8,6 +8,13 @@ package com.blue.harvest.beans;
  */
 public class Account {
 
+	public Account() {}
+	
+	public Account(int accountId, double transaction) {
+		this.accountId = accountId;
+		this.transaction = transaction;
+	}
+	
 	private int accountId;
 	
 	private Double transaction;

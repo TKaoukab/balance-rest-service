@@ -28,7 +28,7 @@ public class ServiceTransactionTest {
 	@Autowired
 	TransactionService transactionService;
 	
-	private static Customer customer = new Customer(1, "David", "Beckham");
+	private static Customer customer = new Customer(1, "David", "Beckham", null);
 	
 	
 	@BeforeEach
@@ -50,7 +50,7 @@ public class ServiceTransactionTest {
 	@Test
 	@Order(2)
 	void testCustomerAccounts() {
-			
+	//the size is expected to be "2" since the first assertion in the customer class variable was made in @testCustomerBalance() method above. 
 	assertEquals(2, transactionService.addAccountToCustomer(customer, 10).getAccountList().size());
 		
 	}
