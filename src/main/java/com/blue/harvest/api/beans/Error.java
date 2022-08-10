@@ -1,4 +1,4 @@
-package com.blue.harvest.beans;
+package com.blue.harvest.api.beans;
 
 import java.io.Serializable;
 

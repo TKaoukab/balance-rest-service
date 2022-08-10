@@ -17,10 +17,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.blue.harvest.beans.Customer;
-import com.blue.harvest.controllers.TransactionController;
-import com.blue.harvest.services.CustomerService;
-import com.blue.harvest.services.TransactionService;
+import com.blue.harvest.api.beans.Customer;
+import com.blue.harvest.api.controllers.TransactionController;
+import com.blue.harvest.api.services.CustomerService;
+import com.blue.harvest.api.services.TransactionService;
 
 @TestMethodOrder(OrderAnnotation.class)
 @ComponentScan(basePackages = "com.blue.harvest")

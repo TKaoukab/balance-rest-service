@@ -1,4 +1,4 @@
-package com.blue.harvest.controllers;
+package com.blue.harvest.api.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blue.harvest.beans.Customer;
-import com.blue.harvest.exception.BusinessException;
-import com.blue.harvest.services.CustomerService;
+import com.blue.harvest.api.beans.Customer;
+import com.blue.harvest.api.exception.BusinessException;
+import com.blue.harvest.api.services.CustomerService;
 
 @RestController
 @RequestMapping("/customer")

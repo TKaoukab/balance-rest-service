@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<title>Customer accounts</title>
+</head>
+<body>
+
+	<h2>Customer details</h2>
+
+	<table th:object="${customer}" border="1" style="border-color: green; text-align: center;">
+
+		<tr>
+			<th>Customer Id</th>
+			<th>name</th>
+			<th>Surname</th>
+			<th>Accounts</th>
+			<th>Balance</th>
+		</tr>
+		<tr>
+			<td th:utext="${customer.customerId}"></td>
+			<td th:utext="${customer.name}"></td>
+			<td th:utext="${customer.surname}"></td>
+			<td>
+				<table th:if="${customer.accountList!=null and !customer.accountList.empty}" border="1" style="border-color: blue; margin: 5px;">
+					<tr>
+						<th>Account Id</th>
+						<th>transaction value</th>
+					</tr>
+					<tr th:each="account : ${customer.accountList}">
+						<td th:text="${account.accountId}">...</td>
+						<td th:text="${account.transaction}">...</td>
+					</tr>
+				</table>
+			</td>
+			<td th:utext="${customer.balance}"></td>
+		</tr>
+
+	</table>
+	
+	<br>
+	<h2>Add a new current account</h2>
+    
+    <form id="addNewAccount" th:action="@{/front/customer/account}"
+         th:object="${customerForm}" method="POST">
+		<input type="hidden" th:field="${customer.customerId}"/>
+		<input type="number" th:field="*{initialCredit}" placeholder="(optional) transaction value" step="0.0001" style="width: 20%;"/>
+		<input type="submit" value="Add new account" />
+    </form>
+
+	<br>
+	<form th:action="@{/front/customer}" method="GET">
+
+		<br /> <input type="submit" value="go back" />
+	</form>
+     
+</body>
+</html>

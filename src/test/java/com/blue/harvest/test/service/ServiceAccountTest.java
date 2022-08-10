@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
-import com.blue.harvest.beans.Customer;
-import com.blue.harvest.repositories.AccountRepositoryImpl;
-import com.blue.harvest.services.CustomerService;
+import com.blue.harvest.api.beans.Customer;
+import com.blue.harvest.api.repositories.AccountRepositoryImpl;
+import com.blue.harvest.api.services.CustomerService;
 
 @TestMethodOrder(OrderAnnotation.class)
 @ContextConfiguration(classes = {AccountRepositoryImpl.class, CustomerService.class})

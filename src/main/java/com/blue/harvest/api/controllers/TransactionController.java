@@ -1,4 +1,4 @@
-package com.blue.harvest.controllers;
+package com.blue.harvest.api.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blue.harvest.beans.Customer;
-import com.blue.harvest.beans.Error;
-import com.blue.harvest.exception.BusinessException;
-import com.blue.harvest.services.CustomerService;
-import com.blue.harvest.services.TransactionService;
+import com.blue.harvest.api.beans.Customer;
+import com.blue.harvest.api.beans.Error;
+import com.blue.harvest.api.exception.BusinessException;
+import com.blue.harvest.api.services.CustomerService;
+import com.blue.harvest.api.services.TransactionService;
 
 @RestController
 @RequestMapping("/account")
@@ -27,7 +27,7 @@ public class TransactionController {
 	TransactionService transactionService;
 
 	@PostMapping(path="/{customerId}")
-	public ResponseEntity<Customer> addAccountToCustomer(@PathVariable String customerId, @RequestParam("initialCredit") String initialCredit) throws BusinessException {
+	public ResponseEntity<Customer> addAccountToCustomer(@PathVariable String customerId, @RequestParam(value="initialCredit", required = false) String initialCredit) throws BusinessException {
 		
 		Customer customer = null;
 		
@@ -43,7 +43,7 @@ public class TransactionController {
 		if(customer != null) {
 			
 			try {
-				
+				if(initialCredit==null) initialCredit = "0";
 				transactionService.addAccountToCustomer(customer, Double.parseDouble(initialCredit));
 			
 			}catch(NumberFormatException nfe) {

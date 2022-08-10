@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Searching customers</title>
+</head>
+<body>
+
+ <h1>Search a Customer:</h1>
+       
+      <!-- Check if errorMessage is not null and not empty -->
+      <div th:if="${errorMessage}" th:utext="${errorMessage}"
+         style="color:red;font-style:italic;">
+         ...
+      </div>
+              
+      <form th:action="@{/front/customer}"
+         th:object="${customerForm}" method="POST">
+         Customer Id : 
+         <input type="number" th:field="*{customerId}" placeholder="customer Id" />    
+         <input type="submit" value="Search" />
+      </form>
+      
+</body>
+</html>

@@ -1,6 +1,6 @@
-package com.blue.harvest.repositories;
+package com.blue.harvest.api.repositories;
 
-import com.blue.harvest.beans.Customer;
+import com.blue.harvest.api.beans.Customer;
 
 /**
  * Custom repository class

@@ -1,6 +1,6 @@
-package com.blue.harvest.exception;
+package com.blue.harvest.api.exception;
 
-import com.blue.harvest.beans.Error;
+import com.blue.harvest.api.beans.Error;
 
 public class BusinessException extends RuntimeException {
 

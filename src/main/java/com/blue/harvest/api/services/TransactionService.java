@@ -1,4 +1,4 @@
-package com.blue.harvest.services;
+package com.blue.harvest.api.services;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.blue.harvest.beans.Account;
-import com.blue.harvest.beans.Customer;
-import com.blue.harvest.repositories.AccountRepository;
+import com.blue.harvest.api.beans.Account;
+import com.blue.harvest.api.beans.Customer;
+import com.blue.harvest.api.repositories.AccountRepository;
 
 @Component
 @Service

@@ -1,4 +1,4 @@
-package com.blue.harvest.repositories;
+package com.blue.harvest.api.repositories;
 
 import java.util.HashMap;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
-import com.blue.harvest.beans.Customer;
+import com.blue.harvest.api.beans.Customer;
 
 @Repository
 public class AccountRepositoryImpl implements AccountRepository, InitializingBean {
