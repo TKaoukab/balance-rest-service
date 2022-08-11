@@ -14,6 +14,8 @@ The front-end is developped using [thymeleaf](https://www.thymeleaf.org/) and ba
 * _"index.html"_ : which represents home screen. this screen allows to search a customer by id.
 * _"customerList.html"_ : It displays a users details, and handles accounts creation for the corresponding customer.
 
+the front end is accessible following the URI : **_/front/customer/_**
+
 To simplify the applications deployment and tests, the front-end shares the spring-boot application with the API. For entreprise-level architecture, the front-end would be set on a diffrent spring boot application, calling the API from a remote server. That's said, I simulate this loose coupling by calling the API as I would have done from a remote server.
 
 ## Features
